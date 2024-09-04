@@ -1,0 +1,55 @@
+<div class="contaier mx-auto">
+  <h1 class="text-main  font-bold m-4  text-4xl text-center ">All Brands</h1>
+  <div class="row">
+    @for (brands of brandsLisst; track $index) {
+    <div class="md:w-3/12 p-3" (click)="alret=false ; modalImg = brands.image ; textImg = brands.name; alretTitle=brands.name" >
+      <div class=" product p-2 border">
+        <div class="flex items-center flex-col ">
+          <img [src]="brands.image" class="w-full" alt="" ngSi>
+          <span class="text-main font-sm  ">{{brands.name}}</span>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div
+    (click)="hideModal( $event.target,eleimg)"
+      [class.hidden]="alret"
+      class="  w-full fixed top-0 bottom-0 left-0 right-0 flex justify-center  items-center h-screen   z-50"
+
+    >
+
+    <div class="fixed inset-0 z-50 flex items-center justify-center " role="dialog" aria-modal="true">
+      <div class="bg-white rounded-lg  shadow">
+        <div class="border-b p-4 flex items-center justify-between ">
+
+          <img #eleimg [src]="modalImg"  [id]="brands._id" class="w-full " alt="">
+          </div>
+          <div class="p-4">
+              <p>{{textImg}}</p>
+          </div>
+          <div class="border-t p-4 flex justify-end space-x-2">
+              <button  type="button" class="bg-gray-200 text-gray-700 px-4 py-2 rounded cursor-pointer" onclick="this.closest('.fixed').remove()">Close</button>
+              <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save changes</button>
+          </div>
+      </div>
+  </div>
+  </div>
+
+    }
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

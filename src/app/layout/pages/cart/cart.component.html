@@ -1,0 +1,29 @@
+<div class="container mx-auto">
+  <h1 class="text-xl font-semibold my-3">Shop cart</h1>
+  <p class="text-main mb-3">Total price : {{data?.totalCartPrice}}</p>
+
+
+  @for (p of data?.products; track $index) {
+    <div class="row bg-gray-200 border-b border-white items-center">
+      <div class="md:w-1/12 p-3">
+        <img class="w-full" [src]="p.product.imageCover" alt="">
+      </div>
+      <div class="md:w-10/12 p-3">
+        <h2 class="text-lg mt-2"> {{p.product.title}} </h2>
+        <p class="text-main my-3">Price : {{p.price}}</p>
+        <span (click)="delete(p.product._id)" class="cursor-pointer mb-2">Remove <i class="fa fa-trash text-main"></i></span>
+      </div>
+      <div class="md:w-1/12 py-1">
+        <button (click)="updateProductCount(p.product._id , p.count= p.count+1)" class="text-white  bg-green-400 rounded m-1 p-1">+</button>
+        <span> {{p.count}} </span>
+        <button (click)="updateProductCount(p.product._id , p.count= p.count-1)" class="text-white  bg-red-400 rounded m-1 p-1">-</button>
+
+      </div>
+
+      </div>
+
+  }
+  <button class="btn-main block ms-auto my-5 p-2 rounded"  [routerLink]="['/shhippaingAddress' , data?._id]"  >Check out</button>
+
+  </div>
+

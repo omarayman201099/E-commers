@@ -1,0 +1,45 @@
+<section class="container mx-auto rounded shadow bg-gray-200 p-3 mb-3">
+  <h1 class=" text-main font-medium text-center border text-3xl ">Welcome to our Orders </h1>
+  @for (order of allOrders; track $index) {
+    <div class=" p-5 mb-5">
+      <h3 class="text-capitalize text-main ">
+        order:
+      </h3>
+      </div>
+    @for (item of order.cartItems; track $index) {
+      <div class="row border-bottom items-center py-5 container mx-auto p-5 mb-5">
+        <div class="md:w-1/12 m-3">
+          <img [src]="item.product.imageCover" class="w-full" [alt]="item.product.title">
+        </div>
+        <div class="md:w-7/12 m-3">
+          <h3 class="h6 small text-main">{{item.product.title}}</h3>
+            <p class="text-capitalize mb-0">{{item.count}}</p>
+            <p class="text-capitalize mb-0">{{item.price}}</p>
+        </div>
+      </div>
+
+
+    }
+
+
+
+    <div class="py-3 mt-4 mx-auto w-3/4">
+        <p class="text-capitalize mb-0 p-1 small">
+          is delivered :
+          <span class="true">
+            {{order.isDelivered}}
+          </span>
+        </p>
+        <p class="text-capitalize mb-0 p-1 small">
+          is paid :
+          <span class="true">
+            {{order.isPaid}}
+          </span>
+        </p>
+        <p class="text-capitalize mb-0 p-1 small">payment method type:visa</p>
+        <p class="text-capitalize mb-0 p-1 small">total price is:{{order.totalOrderPrice}}</p>
+
+
+    </div>
+  }
+</section>

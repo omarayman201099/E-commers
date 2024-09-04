@@ -1,0 +1,56 @@
+<form class="m-3 w-3/4 mx-auto" [formGroup]="logIn" (ngSubmit)="submitLogin()">
+  <h1 class="text-2xl font-bold mt-3">
+    Log In:
+  </h1>
+  @if (err) {
+    <div class="alert bg-red-300  rounded">
+      <p class="text-red-600 p-5">{{err}}</p>
+    </div>
+
+
+  }
+
+  <div class="mb-3 d-flex align-content-center flex-column justify-content-center">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email </label>
+    <input formControlName="email" type="email" class="w-full rounded p-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+    @if (logIn.get('email')?.errors && logIn.get("email")?.touched) {
+      <div class="bg-red-300 p-0 m-0">
+        @if (logIn.get("email")?.errors?.["required"]) {
+          <p class="text-red-600 p-3 ">Email is required</p>
+        }@else if (logIn.get('email')?.errors?.['email']) {
+          <p>enter a vaild email</p>
+        }
+      </div>
+
+    }
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Password</label>
+    <input  formControlName="password" type="text" class="w-full rounded p-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+    @if (logIn.get('password')?.errors && logIn.get("password")?.touched) {
+      <div class="bg-red-300 p-0 m-0">
+        @if (logIn.get("password")?.errors?.["required"]) {
+          <p class="text-red-600 p-3">password is required</p>
+        }@else if (logIn.get('password')?.errors?.['pattern']) {
+          <p>enter a vaild password</p>
+        }
+
+      </div>
+
+    }
+  </div>
+  <div class="flex  justify-between">
+    <a class="underline text-blue-600" routerLink="/forgetpassword"> Forget Password</a>
+    <button [disabled]="logIn.invalid"  type="submit" class="p-3 rounded block ms-auto cursor-pointer bg-main text-white ">
+
+          <span>Register</span>
+        
+
+
+    </button>
+
+  </div>
+
+</form>

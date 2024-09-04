@@ -1,0 +1,30 @@
+<div class="container mx-auto ">
+  <div class="row ">
+    @for (product of productList  ; track $index) {
+    <div class="md:w-2/12 p-3 " >
+      <div>
+      </div>
+        <div class=" product p-2">
+          <div [routerLink]="['/productdetails',product._id]">
+            <img [src]="product.imageCover" class="w-full" alt="">
+            <span class="text-main font-sm">{{product.category.name}}</span>
+            <h3 class="my-3 text-lg font-medium">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
+            <div class="row justify-between">
+              <span> {{product.price}} EG</span>
+              <span>{{product.ratingsAverage}}<i class="fa fa-star rating-color"></i></span>
+            </div>
+          </div>
+          <div class=" row justify-between ">
+            <button (click)="addProductToCart(product._id)" class="btn-main w-full p-2 rounded">Add to cart</button>
+            @if (!whislist.includes(product._id)) {
+              <a (click)="addProductToWhoslist(product._id)" class="cursor-pointer"><i class="far fa-heart heart"></i></a>
+            }
+            @if (whislist.includes(product._id)) {
+              <a class="underline text-red-700  cursor-pointer" (click)="removeItem(product._id)" ><i class="fas fa-heart fa-2x "></i></a>
+            }
+          </div>
+        </div>
+      </div>
+      }
+  </div>
+</div>

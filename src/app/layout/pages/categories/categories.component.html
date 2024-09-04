@@ -1,0 +1,39 @@
+<section class="py-4">
+  <div class="container">
+    <div class="row m-2" #h2>
+      @for (category of categoryList; track $index){
+        <div class="md:w-3/12  product  border md:w-4/12 p-3 " (click)="showSuccess()">
+          <img [src]="category.image" class="w-full"  (click)="name = category.name ; sulg=category.slug" [alt]="category.name">
+          <h3 class="text-center text-main font-bold text-2xl">
+            {{category.name}}
+          </h3>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+
+@defer (on interaction (h2)) {
+    <h3 class="text-center text-main text-3xl font-medium m-5">
+     {{name}} subcategories
+    </h3>
+    <div class="row items-center justify-center container m-5 ">
+      <div class='border p-3 rounded m-3  justify-center product '>
+        <h2 class="p-2 text-main text-center ">
+          {{name}}
+        </h2>
+    </div>
+    <div class=' border p-3 rounded m-3  product'>
+      <h2 class="p-2 text-main text-center ">
+        {{sulg}}
+      </h2>
+  </div>
+  </div>
+
+
+
+
+
+
+}
